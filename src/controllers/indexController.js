@@ -93,9 +93,9 @@ module.exports = {
             req.on("end", function() {
                 let response = JSON.parse(body);
 
-                console.log(response);
+                console.log(body);
 
-                return res.status(200).end("Aprobado");
+                return res.status(200).end("Payment created");
             })
 
         } else {
