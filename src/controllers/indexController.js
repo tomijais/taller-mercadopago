@@ -87,7 +87,7 @@ module.exports = {
             let body = "";
 
             req.on("data", function(buffer){
-                body = buffer.toString();
+                body += buffer.toString();
             })
 
             req.on("end", function() {
