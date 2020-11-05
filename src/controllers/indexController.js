@@ -20,7 +20,7 @@ module.exports = {
                     picture_url: req.query.img,
                     description: "Calzado con muucha facha",
                     quantity: 1,
-                    unit_price: req.query.price
+                    unit_price: Number(req.query.price)
                 }
             ],
             payer: {
