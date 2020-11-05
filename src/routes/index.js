@@ -9,4 +9,10 @@ router.get('/', indexController.home);
 /* GET detail page */
 router.get('/detail', indexController.detail);
 
+router.get("/success", indexController.success);
+
+router.get("/failure", indexController.failure);
+
+router.get("/pending", indexController.pending);
+
 module.exports = router;

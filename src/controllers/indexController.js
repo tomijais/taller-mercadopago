@@ -69,5 +69,14 @@ module.exports = {
                 return res.render("detail", { ...req.query, preference });
             })
 
+    },
+    success: (req, res) => {
+        return res.render("success", { ...req.query })
+    },
+    pending: (req, res) => {
+        return res.render("pending")
+    },
+    failure: (req, res) => {
+        return res.render("failure")
     }
 }
