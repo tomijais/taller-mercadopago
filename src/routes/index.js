@@ -15,4 +15,6 @@ router.get("/failure", indexController.failure);
 
 router.get("/pending", indexController.pending);
 
+router.post("/notifications", indexController.notifications)
+
 module.exports = router;

@@ -59,7 +59,8 @@ module.exports = {
                 failure: "https://gonzalozevallos-taller-mp-dh.herokuapp.com/failure"
             },
             auto_return: "approved",
-            external_reference: "gonzalo.zev@gmail.com"
+            external_reference: "gonzalo.zev@gmail.com",
+            notification_url: "https://gonzalozevallos-taller-mp-dh.herokuapp.com/notifications"
         }
 
         mercadopago.preferences.create(preferenceObj)
@@ -78,5 +79,28 @@ module.exports = {
     },
     failure: (req, res) => {
         return res.render("failure")
+    },
+    notifications: (req, res) => {
+
+        if(req.method == "POST"){
+
+            let body = "";
+
+            req.on("data", function(buffer){
+                body = buffer.toString();
+            })
+
+            req.on("end", function() {
+                let response = JSON.parse(body);
+
+                console.log(response);
+
+                res.status(200);
+
+            })
+        } else {
+            res.status(404)
+        }
+
     }
 }
