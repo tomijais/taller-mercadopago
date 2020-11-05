@@ -95,11 +95,11 @@ module.exports = {
 
                 console.log(response);
 
-                res.status(200);
-
+                res.status(200).end("Aprobado");
             })
+
         } else {
-            res.status(404)
+            res.status(404).end("Mandaste cualquiera");
         }
 
     }
