@@ -82,25 +82,9 @@ module.exports = {
     },
     notifications: (req, res) => {
 
-        if(req.method == "POST"){
+        console.log(req.body);
 
-            let body = "";
-
-            req.on("data", function(buffer){
-                body += buffer.toString();
-            })
-
-            req.on("end", function() {
-                let response = JSON.parse(body);
-
-                console.log(body);
-
-                return res.status(200).end("Payment created");
-            })
-
-        } else {
-            return res.status(404).end("Mandaste cualquiera");
-        }
+        res.status(200).send("OK")
 
     }
 }
