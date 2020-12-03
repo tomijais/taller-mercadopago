@@ -31,7 +31,7 @@ module.exports = {
     res.status(200).end("Ok");
   },
   buy: (req, res) => {
-    const host = "http://localhost:3000/";
+    const host = "https://taller-mercado-pago.herokuapp.com/";
     const url = host + "callback?status=";
     
 
