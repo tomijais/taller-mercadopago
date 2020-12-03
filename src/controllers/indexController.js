@@ -16,7 +16,7 @@ module.exports = {
   callback: (req, res) => {
     console.log(req.query);
     if (req.query.status.includes("success")) {
-      return res.render("succes");
+      return res.render("success");
     }
     if (req.query.status.includes("pending")) {
       return res.render("pending");

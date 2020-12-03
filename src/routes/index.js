@@ -19,4 +19,11 @@ router.get('/callback', indexController.callback)
 
 router.post('/notifications', indexController.notifications)
 
+
+app.post("/webhook", function (res,res) {
+  console.log('webhook', req.body);
+  res.send(req.body)  
+})
+
+
 module.exports = router;
