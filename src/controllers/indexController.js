@@ -31,7 +31,7 @@ module.exports = {
     return res.status(404).end();
   },
   notifications: (req, res) => {
-    console.log(req.body);
+    console.log("notificaciones",req.body);
     res.status(200).end("Ok");
   },
   buy: (req, res) => {
