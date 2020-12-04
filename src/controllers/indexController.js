@@ -16,11 +16,14 @@ module.exports = {
   callback: (req, res) => {
     console.log(req.query);
     if (req.query.status.includes("success")) {
-      return res.render("success"), {
-        payment_type: req.query.payment_type,
-        external_reference : req.query.external_reference,
-        collection_id: req.query.collection_id
-      };
+      console.log(req.query);
+      return (
+        res.render("success"),{
+          payment_type: req.query.payment_type,
+          external_reference: req.query.external_reference,
+          collection_id: req.query.collection_id,
+        }
+      );
     }
     if (req.query.status.includes("pending")) {
       return res.render("pending");
@@ -31,15 +34,16 @@ module.exports = {
     return res.status(404).end();
   },
   notifications: (req, res) => {
-    console.log("notificaciones",req.body);
+    console.log("notificaciones", JSON.stringify(req.body));
+    res.send(req.body)
     res.status(200).end("Ok");
   },
   buy: (req, res) => {
     const host = "https://taller-mercado-pago.herokuapp.com/";
     const url = host + "callback?status=";
-    
 
     let preference = {
+      external_reference: 'tomijais@gmail.com',
       back_urls: {
         success: url + "success",
         pending: url + "pending",
@@ -48,23 +52,23 @@ module.exports = {
       notification_url: host + "notifications",
       auto_return: "approved",
       payer: {
-        name: "Ryan",
-        surname: "Dahl",
+        name: "Lalo",
+        surname: "Landa",
         email: "test_user_63274575@testuser.com",
         phone: {
           area_code: "11",
-          number: 55556666,
+          number: 22223333,
         },
         address: {
-          zip_code: "1234",
-          street_name: "Monroe",
-          street_number: 860,
+          street_name: "False",
+          zip_code: "111",
+          street_number: 123,
         },
       },
       payment_methods: {
-        excluded_payment_methods: [{ id: "visa" }],
+        excluded_payment_methods: [{ id: "amex" }],
         excluded_payment_types: [{ id: "atm" }],
-        installments: 12,
+        installments: 6,
       },
       items: [
         {
@@ -74,7 +78,7 @@ module.exports = {
           title: "Nombre del Producto",
           description: "Dispositivo móvil de Tienda e-commerce",
           unit_price: Number("999"),
-          quantity: 3,
+          quantity: 1,
         },
       ],
     };
